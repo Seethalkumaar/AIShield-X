@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AIShield-X</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+        }
+
+        header {
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .panel {
+            background: #161b22;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #58a6ff;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .start { background: #238636; color: white; }
+        .simulate { background: #8957e5; color: white; }
+        .report { background: #da3633; color: white; }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        #terminal {
+            background: black;
+            height: 250px;
+            overflow-y: auto;
+            padding: 10px;
+            font-family: monospace;
+            border-radius: 6px;
+        }
+
+        #reportBox {
+            background: black;
+            padding: 10px;
+            border-radius: 6px;
+            white-space: pre-wrap;
+        }
+
+        canvas {
+            background: #0d1117;
+            border-radius: 6px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>🛡️ AIShield-X Dashboard</header>
+
+<div class="container">
+
+    <!-- CONTROL PANEL -->
+    <div class="panel full-width">
+        <h2>Controls</h2>
+        <div class="buttons">
+            <button class="start" onclick="start()">▶ Start Monitoring</button>
+            <button class="simulate" onclick="simulate()">🧪 Simulate Attack</button>
+            <button class="report" onclick="generateReport()">📄 Generate Report</button>
+        </div>
+    </div>
+
+    <!-- TERMINAL -->
+    <div class="panel">
+        <h2>💻 Live Terminal</h2>
+        <div id="terminal"></div>
+    </div>
+
+    <!-- GRAPH -->
+    <div class="panel">
+        <h2>📊 Risk Graph</h2>
+        <canvas id="chart"></canvas>
+    </div>
+
+    <!-- REPORT -->
+    <div class="panel full-width">
+        <h2>📄 Incident Report</h2>
+        <div id="reportBox">Click "Generate Report"</div>
+    </div>
+
+</div>
+
+<script>
+let chartData = [];
+let labels = [];
+
+const chart = new Chart(document.getElementById("chart"), {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Risk Score',
+            data: chartData,
+            borderWidth: 2,
+            tension: 0.3
+        }]
+    }
+});
+
+async function start() {
+    await fetch('/start');
+}
+
+async function simulate() {
+    await fetch('/simulate');
+}
+
+async function generateReport() {
+    let res = await fetch('/report');
+    let data = await res.json();
+
+    document.getElementById("reportBox").innerText =
+        JSON.stringify(data, null, 2);
+}
+
+async function updateUI() {
+
+    // 🔥 Logs → Graph
+    let res1 = await fetch('/logs');
+    let logs = await res1.json();
+
+    if (logs.length > 0) {
+        let last = logs[logs.length - 1];
+
+        if (last.risk !== undefined) {
+            chartData.push(last.risk);
+            labels.push(new Date().toLocaleTimeString());
+
+            if (chartData.length > 25) {
+                chartData.shift();
+                labels.shift();
+            }
+
+            chart.update();
+        }
+    }
+
+    // 🔥 Terminal
+    let res2 = await fetch('/live');
+    let live = await res2.json();
+
+    let term = document.getElementById("terminal");
+    term.innerHTML = live.join("<br>");
+    term.scrollTop = term.scrollHeight;
+}
+
+setInterval(updateUI, 1000);
+</script>
+
+</body>
+</html>
