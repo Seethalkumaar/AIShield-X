@@ -92,7 +92,7 @@
 
 <body>
 
-<header>🛡️ AIShield-X Dashboard</header>
+<header> AIShield-X Dashboard</header>
 
 <div class="container">
 
@@ -108,19 +108,19 @@
 
     <!-- TERMINAL -->
     <div class="panel">
-        <h2>💻 Live Terminal</h2>
+        <h2> Live Terminal</h2>
         <div id="terminal"></div>
     </div>
 
     <!-- GRAPH -->
     <div class="panel">
-        <h2>📊 Risk Graph</h2>
+        <h2>Risk Graph</h2>
         <canvas id="chart"></canvas>
     </div>
 
     <!-- REPORT -->
     <div class="panel full-width">
-        <h2>📄 Incident Report</h2>
+        <h2> Incident Report</h2>
         <div id="reportBox">Click "Generate Report"</div>
     </div>
 
@@ -153,15 +153,52 @@ async function simulate() {
 
 async function generateReport() {
     let res = await fetch('/report');
-    let data = await res.json();
+    let report = await res.json();
 
-    document.getElementById("reportBox").innerText =
-        JSON.stringify(data, null, 2);
+    let output = "";
+
+    // HEADER
+    if (report.severity === "HIGH") {
+        output += `<h2 style="color:red">🚨 INCIDENT DETECTED</h2>`;
+    } else if (report.severity === "MEDIUM") {
+        output += `<h2 style="color:orange">⚠️ Suspicious Activity</h2>`;
+    } else {
+        output += `<h2 style="color:green">✔ System Normal</h2>`;
+    }
+
+    // BASIC INFO
+    output += `<b>File:</b> ${report.file}<br>`;
+    output += `<b>Severity:</b> ${report.severity}<br>`;
+    output += `<b>Risk Score:</b> ${report.risk}<br><br>`;
+
+    // ATTACK SUMMARY
+    output += `<b>Attack Summary:</b><br>`;
+    output += `- High entropy detected<br>`;
+    output += `- Suspicious extension detected<br>`;
+    output += `- Multiple file renames (${report.rename_count})<br><br>`;
+
+    // RESPONSE
+    output += `<b>Response:</b><br>`;
+    output += report.quarantined
+        ? "✔ File successfully quarantined<br>"
+        : "❌ Quarantine failed<br>";
+
+    output += `<b>Location:</b> ${report.location}<br><br>`;
+
+    // IMPACT
+    output += `<b>Impact:</b><br>`;
+    output += `Files affected: ${report.files_affected}<br>`;
+    output += `Total alerts: ${report.analytics.total_alerts}<br>`;
+    output += `High severity count: ${report.analytics.high_severity_count}<br>`;
+    output += `Medium severity count: ${report.analytics.medium_severity_count}<br>`;
+
+    // FINAL RENDER
+    document.getElementById("reportBox").innerHTML = output;
 }
 
 async function updateUI() {
 
-    // 🔥 Logs → Graph
+    //  Logs → Graph
     let res1 = await fetch('/logs');
     let logs = await res1.json();
 
@@ -181,12 +218,49 @@ async function updateUI() {
         }
     }
 
-    // 🔥 Terminal
+    //  Terminal
     let res2 = await fetch('/live');
     let live = await res2.json();
 
     let term = document.getElementById("terminal");
-    term.innerHTML = live.join("<br>");
+    let output = "";
+
+    live.forEach(log => {
+        if (typeof log === "object") {
+
+            // Handle system messages
+            if (log.type === "system") {
+                output += `<span style="color:cyan">${log.message}</span><br>`;
+                return;
+            }
+
+            // Handle errors
+            if (log.type === "error") {
+                output += `<span style="color:red">[ERROR] ${log.message}</span><br>`;
+                return;
+            }
+
+            // Handle normal detection logs
+            const severity = log.severity || "INFO";
+
+            const color = severity === "HIGH" ? "red" :
+                          severity === "MEDIUM" ? "orange" :
+                          severity === "LOW" ? "green" : "white";
+
+            output += `<span style="color:${color}">[${severity}] ${log.file || ""} | Risk: ${log.risk ?? ""}` +
+                      `${log.event_rate !== undefined ? ` | Rate: ${log.event_rate.toFixed(2)}` : ""}</span><br>`;
+
+            // Show reasons
+            if (log.reasons && log.reasons.length > 0) {
+                output += `<span style="color:gray">↳ Reasons: ${log.reasons.join(", ")}</span><br>`;
+            }
+
+        } else {
+            output += log + "<br>";
+        }
+    });
+
+    term.innerHTML = output;
     term.scrollTop = term.scrollHeight;
 }
 

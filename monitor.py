@@ -5,7 +5,7 @@ from watchdog.events import FileSystemEventHandler
 
 from entropy import calculate_entropy
 from features import FeatureExtractor
-from risk_engine import calculate_risk, is_ransomware, get_severity
+from risk_engine import calculate_risk, get_severity, is_ransomware
 from logger import log_event
 from session import SessionTracker
 from mitigation import quarantine_file
@@ -17,6 +17,7 @@ class Handler(FileSystemEventHandler):
         self.extractor = FeatureExtractor()
         self.session = SessionTracker()
         self.last_alert = 0
+        self.last_processed = {}
 
     def process(self, path, event_type):
         print("DEBUG: event received", event_type, path)
@@ -25,11 +26,22 @@ class Handler(FileSystemEventHandler):
             print("DEBUG: skipped non-file path", path)
             return
 
+        now = time.time()
+        path_key = str(path)
+        if path_key in self.last_processed and now - self.last_processed[path_key] < 0.5:
+            print("DEBUG: skipped duplicate event", path)
+            return
+        self.last_processed[path_key] = now
+
         try:
-            # Read part of file safely
             data = path.read_bytes()[:200000]
             entropy = calculate_entropy(data)
 
+        except FileNotFoundError:
+            print(f"DEBUG: file disappeared before processing (likely renamed): {path}")
+            return
+
+        try:
             # Create event
             event = {
                 "timestamp": time.time(),
@@ -40,104 +52,98 @@ class Handler(FileSystemEventHandler):
                 ]
             }
 
-            # Add to trackers
+            # Trackers
             self.extractor.add_event(event)
             self.session.add_event(event)
 
-            # Extract features
+            # Features
             features = self.extractor.extract(path, entropy)
             stats = self.session.get_stats()
 
-            # Calculate risk
-            risk = calculate_risk(features)
+            # Risk
+            risk, reasons = calculate_risk(features)
             severity = get_severity(risk)
+            is_attack = is_ransomware(risk, features)
 
-            # 🧠 Timeline base
+            # Timeline
             timeline_entry = f"{time.strftime('%H:%M:%S')} → {event_type} → {path.name}"
 
-            # 🔹 Terminal + UI log
-            msg = f"File: {path} | Entropy: {entropy:.2f} | [{severity}] Risk: {risk}"
-            print(msg)
-            add_log(msg)
+            # TERMINAL PRINT
+            print(f"File: {path} | Entropy: {entropy:.2f} | [{severity}] Risk: {risk}")
+            if reasons:
+                print("Reasons:", ", ".join(reasons))
 
-            # 📊 Log every event (for graph)
-            event_log = {
+            # STRUCTURED LOG FOR UI (FIXED)
+            log_entry = {
                 "type": "event",
                 "file": str(path),
+                "entropy": entropy,
                 "risk": risk,
                 "severity": severity,
+                "event_rate": features.get("event_rate"),
+                "reasons": reasons,
                 "timestamp": time.time(),
                 "timeline": timeline_entry
             }
-            log_event(event_log)
 
-            # 🔥 Severity-based response
+            add_log(log_entry)
+            log_event(log_entry)
+
+            # RESPONSE
             current_time = time.time()
 
-            if severity == "HIGH 🚨":
+            if is_attack:
                 if current_time - self.last_alert > 5:
                     self.last_alert = current_time
 
-                    print("[ACTION] HIGH → Quarantine triggered")
-                    alert_msg = f"[ALERT] 🚨 RANSOMWARE → {path} (Risk: {risk})"
-                    print(alert_msg)
-                    add_log(alert_msg)
+                    print("[ACTION] RANSOMWARE detected → Quarantine triggered")
 
-                    # 🛑 Mitigation
                     success, location = quarantine_file(path)
 
-                    mitigation_info = {
-                        "quarantined": success,
-                        "location": location
-                    }
-
-                    # ✅ Timeline update (CORRECT)
                     if success:
-                        timeline_entry = timeline_entry + " → HIGH detected → quarantined"
+                        timeline_entry += " → ransomware detected → quarantined"
                     else:
-                        timeline_entry = timeline_entry + " → HIGH detected → quarantine failed"
+                        timeline_entry += " → ransomware detected → quarantine failed"
 
-                    print("Mitigation:", mitigation_info)
-                    add_log(f"Mitigation: {mitigation_info}")
-
-                    # 📦 Final structured alert
                     alert = {
                         "type": "ransomware",
                         "severity": severity,
                         "risk": risk,
                         "file": str(path),
+                        "event_rate": features.get("event_rate"),
                         "stats": stats,
                         "quarantined": success,
                         "location": location,
                         "timestamp": current_time,
-                        "timeline": timeline_entry
+                        "timeline": timeline_entry,
+                        "reasons": reasons
                     }
 
+                    add_log(alert)
                     log_event(alert)
 
             elif severity == "MEDIUM":
-                print("[ACTION] MEDIUM → Alert logged")
+                timeline_entry += " → MEDIUM detected"
 
-                timeline_entry = timeline_entry + " → MEDIUM detected"
-
-                warning_log = {
+                warning = {
                     "type": "warning",
                     "severity": severity,
                     "risk": risk,
                     "file": str(path),
+                    "event_rate": features.get("event_rate"),
                     "timestamp": current_time,
-                    "timeline": timeline_entry
+                    "timeline": timeline_entry,
+                    "reasons": reasons
                 }
 
-                log_event(warning_log)
-
-            elif severity == "LOW":
-                print("[ACTION] LOW → Ignored")
+                add_log(warning)
+                log_event(warning)
 
         except Exception as e:
             error_msg = f"Error processing file: {e}"
             print(error_msg)
-            add_log(error_msg)
+            add_log({"type": "error", "message": error_msg})
+
 
     def on_created(self, event):
         if not event.is_directory:
@@ -167,6 +173,11 @@ def start_monitor(folder):
 
     print("DEBUG: monitor started")
     print(f"Monitoring folder: {folder_path}")
-    add_log(f"Monitoring started on folder: {folder_path}")
+
+    add_log({
+        "type": "system",
+        "message": f"Monitoring started on folder: {folder_path}",
+        "timestamp": time.time()
+    })
 
     return observer

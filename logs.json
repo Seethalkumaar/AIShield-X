@@ -2,321 +2,351 @@
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_0.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.1403718,
-    "timeline": "02:24:22 \u2192 created \u2192 file_0.txt",
-    "logged_at": 1775422462.141622
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_0.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.1459103,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_0.txt",
-    "logged_at": 1775422462.1535425
+    "event_rate": 0.1,
+    "reasons": [],
+    "timestamp": 1776208595.58967,
+    "timeline": "04:46:35 \u2192 created \u2192 file_0.txt",
+    "logged_at": 1776208595.59094
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_1.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.156905,
-    "timeline": "02:24:22 \u2192 created \u2192 file_1.txt",
-    "logged_at": 1775422462.1641326
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_1.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.1662817,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_1.txt",
-    "logged_at": 1775422462.1730866
+    "event_rate": 0.2,
+    "reasons": [],
+    "timestamp": 1776208595.598887,
+    "timeline": "04:46:35 \u2192 created \u2192 file_1.txt",
+    "logged_at": 1776208595.6085024
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_2.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.1767886,
-    "timeline": "02:24:22 \u2192 created \u2192 file_2.txt",
-    "logged_at": 1775422462.1849449
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_2.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.18688,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_2.txt",
-    "logged_at": 1775422462.1950357
+    "event_rate": 0.3,
+    "reasons": [],
+    "timestamp": 1776208595.6129262,
+    "timeline": "04:46:35 \u2192 created \u2192 file_2.txt",
+    "logged_at": 1776208595.6213245
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_3.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.1987414,
-    "timeline": "02:24:22 \u2192 created \u2192 file_3.txt",
-    "logged_at": 1775422462.2062771
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_3.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.2085075,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_3.txt",
-    "logged_at": 1775422462.2161949
+    "event_rate": 0.4,
+    "reasons": [],
+    "timestamp": 1776208595.6263301,
+    "timeline": "04:46:35 \u2192 created \u2192 file_3.txt",
+    "logged_at": 1776208595.6339574
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_4.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.2196383,
-    "timeline": "02:24:22 \u2192 created \u2192 file_4.txt",
-    "logged_at": 1775422462.2273393
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_4.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.2293983,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_4.txt",
-    "logged_at": 1775422462.2370014
+    "event_rate": 0.5,
+    "reasons": [],
+    "timestamp": 1776208595.6381283,
+    "timeline": "04:46:35 \u2192 created \u2192 file_4.txt",
+    "logged_at": 1776208595.645731
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_5.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.2406394,
-    "timeline": "02:24:22 \u2192 created \u2192 file_5.txt",
-    "logged_at": 1775422462.2486215
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_5.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.250787,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_5.txt",
-    "logged_at": 1775422462.2591002
+    "event_rate": 0.6,
+    "reasons": [],
+    "timestamp": 1776208595.6500828,
+    "timeline": "04:46:35 \u2192 created \u2192 file_5.txt",
+    "logged_at": 1776208595.657509
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_6.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.2621517,
-    "timeline": "02:24:22 \u2192 created \u2192 file_6.txt",
-    "logged_at": 1775422462.2703395
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_6.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.2730813,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_6.txt",
-    "logged_at": 1775422462.2818372
+    "event_rate": 0.7,
+    "reasons": [],
+    "timestamp": 1776208595.662029,
+    "timeline": "04:46:35 \u2192 created \u2192 file_6.txt",
+    "logged_at": 1776208595.6705465
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_7.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.2846806,
-    "timeline": "02:24:22 \u2192 created \u2192 file_7.txt",
-    "logged_at": 1775422462.2949815
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_7.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.2970564,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_7.txt",
-    "logged_at": 1775422462.3049424
+    "event_rate": 0.8,
+    "reasons": [],
+    "timestamp": 1776208595.6740017,
+    "timeline": "04:46:35 \u2192 created \u2192 file_7.txt",
+    "logged_at": 1776208595.6818411
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_8.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.3091207,
-    "timeline": "02:24:22 \u2192 created \u2192 file_8.txt",
-    "logged_at": 1775422462.3174088
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_8.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.319513,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_8.txt",
-    "logged_at": 1775422462.328365
+    "event_rate": 0.9,
+    "reasons": [],
+    "timestamp": 1776208595.6854415,
+    "timeline": "04:46:35 \u2192 created \u2192 file_8.txt",
+    "logged_at": 1776208595.6936831
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_9.txt",
+    "entropy": 3.0271691184406184,
     "risk": 0,
     "severity": "LOW",
-    "timestamp": 1775422462.3318331,
-    "timeline": "02:24:22 \u2192 created \u2192 file_9.txt",
-    "logged_at": 1775422462.3398466
-  },
-  {
-    "type": "event",
-    "file": "D:\\AIShield-X\\sandbox\\file_9.txt",
-    "risk": 0,
-    "severity": "LOW",
-    "timestamp": 1775422462.3430061,
-    "timeline": "02:24:22 \u2192 modified \u2192 file_9.txt",
-    "logged_at": 1775422462.3522985
+    "event_rate": 1.0,
+    "reasons": [],
+    "timestamp": 1776208595.6993449,
+    "timeline": "04:46:35 \u2192 created \u2192 file_9.txt",
+    "logged_at": 1776208595.7074277
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_0.locked",
+    "entropy": 7.966083907863875,
     "risk": 40,
     "severity": "MEDIUM",
-    "timestamp": 1775422463.1582563,
-    "timeline": "02:24:23 \u2192 moved \u2192 file_0.locked",
-    "logged_at": 1775422463.158805
+    "event_rate": 1.1,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)"
+    ],
+    "timestamp": 1776208596.6114671,
+    "timeline": "04:46:36 \u2192 moved \u2192 file_0.locked",
+    "logged_at": 1776208596.6130652
   },
   {
     "type": "warning",
     "severity": "MEDIUM",
     "risk": 40,
     "file": "D:\\AIShield-X\\sandbox\\file_0.locked",
-    "timestamp": 1775422463.1602607,
-    "timeline": "02:24:23 \u2192 moved \u2192 file_0.locked \u2192 MEDIUM detected",
-    "logged_at": 1775422463.170537
+    "event_rate": 1.1,
+    "timestamp": 1776208596.61452,
+    "timeline": "04:46:36 \u2192 moved \u2192 file_0.locked \u2192 MEDIUM detected",
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)"
+    ],
+    "logged_at": 1776208596.623869
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_1.locked",
+    "entropy": 7.964029772022953,
     "risk": 40,
     "severity": "MEDIUM",
-    "timestamp": 1775422463.359781,
-    "timeline": "02:24:23 \u2192 moved \u2192 file_1.locked",
-    "logged_at": 1775422463.3603437
+    "event_rate": 1.2,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)"
+    ],
+    "timestamp": 1776208596.8129675,
+    "timeline": "04:46:36 \u2192 moved \u2192 file_1.locked",
+    "logged_at": 1776208596.8138406
   },
   {
     "type": "warning",
     "severity": "MEDIUM",
     "risk": 40,
     "file": "D:\\AIShield-X\\sandbox\\file_1.locked",
-    "timestamp": 1775422463.3617642,
-    "timeline": "02:24:23 \u2192 moved \u2192 file_1.locked \u2192 MEDIUM detected",
-    "logged_at": 1775422463.3705091
+    "event_rate": 1.2,
+    "timestamp": 1776208596.814506,
+    "timeline": "04:46:36 \u2192 moved \u2192 file_1.locked \u2192 MEDIUM detected",
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)"
+    ],
+    "logged_at": 1776208596.8240697
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_2.locked",
+    "entropy": 7.961890149653541,
     "risk": 40,
     "severity": "MEDIUM",
-    "timestamp": 1775422463.563046,
-    "timeline": "02:24:23 \u2192 moved \u2192 file_2.locked",
-    "logged_at": 1775422463.5638728
+    "event_rate": 1.3,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)"
+    ],
+    "timestamp": 1776208597.0276184,
+    "timeline": "04:46:37 \u2192 moved \u2192 file_2.locked",
+    "logged_at": 1776208597.0295355
   },
   {
     "type": "warning",
     "severity": "MEDIUM",
     "risk": 40,
     "file": "D:\\AIShield-X\\sandbox\\file_2.locked",
-    "timestamp": 1775422463.5652854,
-    "timeline": "02:24:23 \u2192 moved \u2192 file_2.locked \u2192 MEDIUM detected",
-    "logged_at": 1775422463.5742176
+    "event_rate": 1.3,
+    "timestamp": 1776208597.0322912,
+    "timeline": "04:46:37 \u2192 moved \u2192 file_2.locked \u2192 MEDIUM detected",
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)"
+    ],
+    "logged_at": 1776208597.0547247
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_3.locked",
+    "entropy": 7.9690127751075295,
     "risk": 60,
-    "severity": "HIGH \ud83d\udea8",
-    "timestamp": 1775422463.7658863,
-    "timeline": "02:24:23 \u2192 moved \u2192 file_3.locked",
-    "logged_at": 1775422463.766355
+    "severity": "HIGH",
+    "event_rate": 1.4,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)",
+      "+20 Multiple file renames"
+    ],
+    "timestamp": 1776208597.221499,
+    "timeline": "04:46:37 \u2192 moved \u2192 file_3.locked",
+    "logged_at": 1776208597.222744
   },
   {
     "type": "mitigation",
     "action": "quarantine",
     "file": "quarantine\\file_3.locked",
     "status": "success",
-    "logged_at": 1775422463.7789326
+    "logged_at": 1776208597.2395864
   },
   {
     "type": "ransomware",
-    "severity": "HIGH \ud83d\udea8",
+    "severity": "HIGH",
     "risk": 60,
     "file": "D:\\AIShield-X\\sandbox\\file_3.locked",
+    "event_rate": 1.4,
     "stats": {
-      "file_count": 24,
+      "file_count": 14,
       "rename_count": 4,
-      "suspicious": 4
+      "suspicious": 4,
+      "session_events": 14,
+      "session_duration": 1.6315395832061768
     },
     "quarantined": true,
     "location": "quarantine\\file_3.locked",
-    "timestamp": 1775422463.767447,
-    "timeline": "02:24:23 \u2192 moved \u2192 file_3.locked \u2192 HIGH detected \u2192 quarantined",
-    "logged_at": 1775422463.7895901
+    "timestamp": 1776208597.224368,
+    "timeline": "04:46:37 \u2192 moved \u2192 file_3.locked \u2192 ransomware detected \u2192 quarantined",
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)",
+      "+20 Multiple file renames"
+    ],
+    "logged_at": 1776208597.256636
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_4.locked",
+    "entropy": 7.966067568767136,
     "risk": 60,
-    "severity": "HIGH \ud83d\udea8",
-    "timestamp": 1775422463.969957,
-    "timeline": "02:24:23 \u2192 moved \u2192 file_4.locked",
-    "logged_at": 1775422463.9707174
+    "severity": "HIGH",
+    "event_rate": 1.5,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)",
+      "+20 Multiple file renames"
+    ],
+    "timestamp": 1776208597.4243853,
+    "timeline": "04:46:37 \u2192 moved \u2192 file_4.locked",
+    "logged_at": 1776208597.425373
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_5.locked",
+    "entropy": 7.957335932204375,
     "risk": 60,
-    "severity": "HIGH \ud83d\udea8",
-    "timestamp": 1775422464.1708865,
-    "timeline": "02:24:24 \u2192 moved \u2192 file_5.locked",
-    "logged_at": 1775422464.1715262
+    "severity": "HIGH",
+    "event_rate": 1.6,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)",
+      "+20 Multiple file renames"
+    ],
+    "timestamp": 1776208597.6233423,
+    "timeline": "04:46:37 \u2192 moved \u2192 file_5.locked",
+    "logged_at": 1776208597.6238942
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_6.locked",
+    "entropy": 7.967969904336278,
     "risk": 60,
-    "severity": "HIGH \ud83d\udea8",
-    "timestamp": 1775422464.373322,
-    "timeline": "02:24:24 \u2192 moved \u2192 file_6.locked",
-    "logged_at": 1775422464.3739257
+    "severity": "HIGH",
+    "event_rate": 1.7,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)",
+      "+20 Multiple file renames"
+    ],
+    "timestamp": 1776208597.825086,
+    "timeline": "04:46:37 \u2192 moved \u2192 file_6.locked",
+    "logged_at": 1776208597.8260677
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_7.locked",
+    "entropy": 7.96410133424865,
     "risk": 60,
-    "severity": "HIGH \ud83d\udea8",
-    "timestamp": 1775422464.577679,
-    "timeline": "02:24:24 \u2192 moved \u2192 file_7.locked",
-    "logged_at": 1775422464.5784078
+    "severity": "HIGH",
+    "event_rate": 1.8,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)",
+      "+20 Multiple file renames"
+    ],
+    "timestamp": 1776208598.028507,
+    "timeline": "04:46:38 \u2192 moved \u2192 file_7.locked",
+    "logged_at": 1776208598.029298
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_8.locked",
+    "entropy": 7.960498412953731,
     "risk": 60,
-    "severity": "HIGH \ud83d\udea8",
-    "timestamp": 1775422464.782819,
-    "timeline": "02:24:24 \u2192 moved \u2192 file_8.locked",
-    "logged_at": 1775422464.7833142
+    "severity": "HIGH",
+    "event_rate": 1.9,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)",
+      "+20 Multiple file renames"
+    ],
+    "timestamp": 1776208598.2302027,
+    "timeline": "04:46:38 \u2192 moved \u2192 file_8.locked",
+    "logged_at": 1776208598.231097
   },
   {
     "type": "event",
     "file": "D:\\AIShield-X\\sandbox\\file_9.locked",
+    "entropy": 7.967053982124966,
     "risk": 60,
-    "severity": "HIGH \ud83d\udea8",
-    "timestamp": 1775422464.9831305,
-    "timeline": "02:24:24 \u2192 moved \u2192 file_9.locked",
-    "logged_at": 1775422464.9837992
+    "severity": "HIGH",
+    "event_rate": 2.0,
+    "reasons": [
+      "+30 High entropy (possible encryption)",
+      "+10 Suspicious file extension (.encrypted/.locked)",
+      "+20 Multiple file renames"
+    ],
+    "timestamp": 1776208598.431583,
+    "timeline": "04:46:38 \u2192 moved \u2192 file_9.locked",
+    "logged_at": 1776208598.4321566
   }
 ]
